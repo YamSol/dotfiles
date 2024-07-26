@@ -1,0 +1,37 @@
+{
+	"Base code + locale": {
+		"prefix": "basel",
+		"body": [
+			"#include <iostream>",
+			"#include <locale.h>",
+			"",
+			"using namespace std;",
+			"",
+			"int main() {",
+			"    // definindo localidade",
+			"    setlocale(LC_ALL, \"\");",
+			"",
+			"    ${0:/*Code Here*/}",
+			"",
+			"    return 0;",
+			"}"
+		],
+		"description": "Base code for simple console programs + locale configuration"
+	},
+	"Base code": {
+		"prefix": "base",
+		"body": [
+			"#include <iostream>",
+			"",
+			"using namespace std;",
+			"",
+			"int main() {",
+			"",
+			"    ${0:/*Code Here*/}",
+			"",
+			"    return 0;",
+			"}"
+		],
+		"description": "Base code for simple console programs"
+	}
+}

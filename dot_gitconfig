@@ -1,0 +1,9 @@
+[user]
+	signingKey = 562462D13CE001E799B430F2292E2FF8F08BCD0E
+	name = Yam Sol Bertamini
+	email = yambertamini.sol@gmail.com
+[commit]
+	gpgSign = true
+[alias]
+	s = status
+	logg = log --oneline --limit 10
