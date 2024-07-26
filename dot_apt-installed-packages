@@ -43,3 +43,5 @@ virtualbox-7.0
 wget
 yarn
 yt-dlp
+thefuck
+ranger
