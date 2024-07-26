@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+chezmoi cd && 
+	apt list --installed | rg --invert-match 'automatic]' | rg --invert-match '^lib' | replace '[installed]' '' | sed '/^$/d' | awk -F '/' '{print $1}' > dot_apt-installed-packages &&
+	chezmoi add apply ~/.apt-installed-packages
