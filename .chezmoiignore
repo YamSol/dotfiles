@@ -1,3 +1,9 @@
 .config/alacritty/themes/**
+
 .config/fish/fish_variables
+
 .config/Code/User/profiles/-2d0c8667/globalStorage/**
+
+!.config/btop/btop.conf
+.config/btop/*
+
