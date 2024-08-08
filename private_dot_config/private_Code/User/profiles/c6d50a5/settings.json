@@ -1,33 +1,33 @@
 {
+  "workbench.sideBar.location": "right",
+  "editor.fontSize": 14,
+  "workbench.colorTheme": "Visual Studio 2017 Light - C++",
+  "editor.fontLigatures": true,
+  "editor.rulers": [80, 120],
+  "workbench.iconTheme": "symbols",
+  "editor.fontFamily": "JetBrains Mono",
+  "explorer.compactFolders": false,
+  "editor.tabSize": 2,
+
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-  "terminal.integrated.defaultProfile.windows": "Git Bash",
   "diffEditor.hideUnchangedRegions.enabled": true,
   "terminal.integrated.enableMultiLinePasteWarning": "never",
   "c-cpp-compile-run.should-show-notifications": false,
   "c-cpp-compile-run.output-location": "",
   "security.workspace.trust.untrustedFiles": "open",
   "cmake.showOptionsMovedNotification": false,
-  "workbench.colorTheme": "Material Theme Darker High Contrast",
   "symbols.hidesExplorerArrows": false,
-  "workbench.iconTheme": "symbols",
-  "editor.fontFamily": "JetBrains Mono",
-  "editor.fontSize": 14,
   "editor.lineHeight": 1.8,
-  "editor.rulers": [80, 120],
   "workbench.startupEditor": "newUntitledFile",
   "editor.renderLineHighlight": "gutter",
-  "editor.fontLigatures": true,
   "git.autofetch": true,
   "workbench.editor.labelFormat": "default",
-  "explorer.compactFolders": false,
   "editor.semanticHighlighting.enabled": false,
-  "breadcrumbs.enabled": false,
   "editor.minimap.enabled": false,
   "editor.scrollbar.vertical": "visible",
   "editor.scrollbar.horizontal": "hidden",
   "workbench.statusBar.visible": false,
-  "window.titleBarStyle": "teste",
   "apc.electron": {
     "titleBarStyle": "hiddenInset",
     "trafficLightPosition": {
@@ -50,7 +50,6 @@
   },
   "workbench.layoutControl.enabled": false,
   "window.commandCenter": false, // barra de cima de pesquisa
-  "window.menuBarVisibility": "compact",
   "workbench.editorAssociations": {
     "*.pdf": "default"
   },
@@ -60,8 +59,7 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.tabSize": 2,
-  "workbench.sideBar.location": "right",
+
   "cSpell.userWords": [
     "knexfile"
   ],
@@ -71,15 +69,9 @@
     "markdown": false,
     "scminput": false
   },
-  "typescript.suggest.autoImports": true,
-  // "files.autoSave": "afterDelay",
+  "files.autoSave": "afterDelay",
   "editor.lineNumbers": "relative",
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "git.suggestSmartCommit": false,
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "files.autoSave": "afterDelay"
+  }
 }

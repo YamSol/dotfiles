@@ -39,7 +39,7 @@
   "ui.dark_theme_variant": true,
   "ui.rendered_tile_cache_size": 16384,
   "saving.default_format": "openraster",
-  "brushmanager.selected_brush": "classic/marker_small",
+  "brushmanager.selected_brush": "classic/brush",
   "brushmanager.selected_groups": [],
   "frame.color_rgba": [
     0.12,
@@ -57,16 +57,6 @@
     "left_sidebar": {
       "groups": [
         {
-          "tools": [],
-          "active_page": -1
-        }
-      ],
-      "w": 23,
-      "h": 930
-    },
-    "right_sidebar": {
-      "groups": [
-        {
           "tools": [
             [
               "MyPaintLayersTool"
@@ -77,40 +67,53 @@
           "h": 412
         },
         {
-          "tools": [
-            [
-              "MyPaintHSVWheelTool"
-            ]
-          ],
-          "active_page": 0,
-          "w": 320,
-          "h": 237
-        },
+          "tools": [],
+          "active_page": -1
+        }
+      ],
+      "w": 320,
+      "h": 920
+    },
+    "right_sidebar": {
+      "groups": [
         {
           "tools": [
             [
               "MyPaintBrushGroupTool",
               "Classic"
+            ],
+            [
+              "MyPaintModeOptionsTool"
+            ]
+          ],
+          "active_page": 1,
+          "w": 243,
+          "h": 434
+        },
+        {
+          "tools": [
+            [
+              "MyPaintHSVCubeTool"
             ]
           ],
           "active_page": 0,
-          "w": 320,
-          "h": 264
+          "w": 243,
+          "h": 474
         },
         {
           "tools": [],
           "active_page": -1
         }
       ],
-      "w": 320,
-      "h": 930
+      "w": 243,
+      "h": 920
     },
     "floating": [],
     "position": {
-      "x": 1366,
-      "y": 20,
-      "w": 1900,
-      "h": 1029
+      "x": 1921,
+      "y": 25,
+      "w": 1898,
+      "h": 1019
     },
     "autohide": true,
     "fullscreen": false,
@@ -143,9 +146,13 @@
     "Kingston HyperX Pulsefire Core Keyboard:mouse:4": {},
     "Kingston HyperX Pulsefire Core:mouse:4": {},
     "SONiX USB DEVICE Keyboard:mouse:4": {},
-    "Virtual core XTEST pointer:mouse:2": {}
+    "Virtual core XTEST pointer:mouse:2": {},
+    "ELAN050A:00 04F3:3158 Touchpad:touchpad:4": {},
+    "ELAN050A:00 04F3:3158 Mouse:mouse:4": {},
+    "Wacom One by Wacom S Pen stylus:pen:6": {},
+    "Wacom One by Wacom S Pen eraser:eraser:6": {}
   },
-  "colors.current": "#ffffff",
+  "colors.current": "#d10000",
   "colors.palette": {
     "name": "MyPaint Default",
     "columns": 7,
@@ -295,12 +302,12 @@
         "Prussian blue"
       ],
       [
-        "#304577",
-        "Dark grey blue"
-      ],
-      [
         "#0047ab",
         "Cobalt blue"
+      ],
+      [
+        "#304577",
+        "Dark grey blue"
       ],
       [
         "#1f75fe",
@@ -465,11 +472,11 @@
   "ui.file_compat_warning_mild": true,
   "ui.file_compat_warning_severe": true,
   "colors.history": [
-    "#44aa66",
-    "#aa6633",
-    "#003153",
-    "#d8d3f7",
-    "#ffffff"
+    "#78b4ff",
+    "#0047ab",
+    "#ffa811",
+    "#15221d",
+    "#d10000"
   ],
   "brush_chooser.default.window_size": [
     256,
@@ -478,5 +485,12 @@
   "color_chooser.default.window_size": [
     256,
     264
-  ]
+  ],
+  "devbrush.last_used": "Wacom One by Wacom S Pen stylus",
+  "color_chooser.fast_subset.window_size": [
+    282,
+    322
+  ],
+  "color_chooser.fast_subset.selected_adjuster": "PaletteTool",
+  "brush_chooser.default.selected_group": "Classic"
 }

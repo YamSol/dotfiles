@@ -7,9 +7,14 @@ end
 source ~/.asdf/asdf.fish
 
 #ALIAS
-alias fd=fdfind
-alias sai="sudo apt install"
-alias sau="sudo apt update"
+alias sa="sudo apt"
+alias sai="sa install"
+alias sau="sa update"
+
+alias e="emacsclient -t"
+
+# GLOBAL ENV
+#set -Ux TERMINAL=
 
 # PATH APPEND
 fish_add_path -m ~/.local/bin

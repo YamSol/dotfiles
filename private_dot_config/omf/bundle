@@ -1,4 +1,5 @@
 package apt
 package colored-man-pages
 package fuck
+theme batman
 theme default

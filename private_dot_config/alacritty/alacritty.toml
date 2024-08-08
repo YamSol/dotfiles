@@ -1,8 +1,33 @@
 
+## THEMES
+# afterglow.toml             catppuccin.toml              github_dark_dimmed.toml             horizon-dark.toml         night_owlish_light.toml  smoooooth.toml
+# alabaster_dark.toml        challenger_deep.toml         github_dark_high_contrast.toml      hyper.toml                night_owl.toml           snazzy.toml
+# alabaster.toml             chicago95.toml               github_dark.toml                    inferno.toml              noctis-lux.toml          solarized_dark.toml
+# alacritty_0_12.toml        citylights.toml              github_dark_tritanopia.toml         iris.toml                 nordic.toml              solarized_light.toml
+# argonaut.toml              Cobalt2.toml                 github_light_colorblind.toml        iterm.toml                nord_light.toml          solarized_osaka.toml
+# ashes_dark.toml            cyber_punk_neon.toml         github_light_default.toml           kanagawa_dragon.toml      nord.toml                synthwave_84.toml
+# ashes_light.toml           dark_pastels.toml            github_light_high_contrast.toml     kanagawa_wave.toml        oceanic_next.toml        taerminal.toml
+# atom_one_light.toml        dark_plus.toml               github_light.toml                   konsole_linux.toml        omni.toml                tango_dark.toml
+# aura.toml                  dark_pride.toml              github_light_tritanopia.toml        low_contrast.toml         one_dark.toml            tender.toml
+# ayu_dark.toml              deep_space.toml              gnome_terminal.toml                 Mariana.toml              palenight.toml           terminal_app.toml
+# ayu_light.toml             doom_one.toml                google.toml                         marine_dark.toml          papercolor_dark.toml     thelovelace.toml
+# baitong.toml               dracula_plus.toml            gotham.toml                         material_theme_mod.toml   papercolor_light.toml    tokyo-night-storm.toml
+# base16_default_dark.toml   dracula.toml                 gruvbox_dark.toml                   material_theme.toml       papertheme.toml          tokyo-night.toml
+# blood_moon.toml            enfocado_dark.toml           gruvbox_light.toml                  meliora.toml              pastel_dark.toml         tomorrow_night_bright.toml
+# bluish.toml                enfocado_light.toml          gruvbox_material_hard_dark.toml     midnight-haze.toml        pencil_dark.toml         tomorrow_night.toml
+# breeze.toml                everforest_dark.toml         gruvbox_material_hard_light.toml    monokai_charcoal.toml     pencil_light.toml        ubuntu.toml
+# campbell.toml              everforest_light.toml        gruvbox_material_medium_dark.toml   monokai_pro.toml          rainbow.toml             vesper.toml
+# carbonfox.toml             falcon.toml                  gruvbox_material_medium_light.toml  monokai.toml              remedy_dark.toml         wombat.toml
+# catppuccin_frappe.toml     flat_remix.toml              gruvbox_material.toml               moonlight_ii_vscode.toml  rose-pine-dawn.toml      xterm.toml
+# catppuccin_latte.toml      flexoki.toml                 hardhacker.toml                     msx.toml                  rose-pine-moon.toml      zenburn.toml
+# catppuccin_macchiato.toml  github_dark_colorblind.toml  hatsunemiku.toml                    nightfly.toml             rose-pine.toml
+# catppuccin_mocha.toml      github_dark_default.toml     high_contrast.toml                  nightfox.toml             seashells.toml
+
 # Themes from https://github.com/alacritty/alacritty-theme
+
 import = [
-	".config/alacritty/themes/themes/monokai.toml"
+	"themes/themes/github_dark_default.toml"
 ]
 
 [font]
-	size = 10
+	size = 9

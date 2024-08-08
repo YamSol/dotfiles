@@ -6,4 +6,4 @@
 	gpgSign = true
 [alias]
 	s = status
-	logg = log --oneline --limit 10
+	logg = log --oneline

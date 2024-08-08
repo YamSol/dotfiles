@@ -12,18 +12,18 @@ general {
 }
 
 #order += "ipv6"
+order += "load"
 order += "wireless _first_"
 order += "ethernet _first_"
-order += "battery 0"
+order += "battery 1"
 order += "disk /"
-order += "load"
 order += "volume first"
 order += "memory"
 order += "tztime local"
 
 wireless _first_ {
         format_up = "W: (%quality at %essid) %ip"
-        format_down = "W: down"
+        format_down = "W: downnn"
 }
 
 ethernet _first_ {
@@ -31,38 +31,42 @@ ethernet _first_ {
         format_down = "E: down"
 }
 
-battery 0 {
-        format = "%status %percentage %remaining %emptytime"
+battery 1 {
+        #format = "%status %percentage %remaining %emptytime"
+        format = "%status %percentage"
         format_down = "No battery"
         status_chr = "⚡ CHR"
         status_bat = "🔋 BAT"
         status_unk = "? UNK"
         status_full = "☻ FULL"
-        path = "/sys/class/power_supply/BAT0/uevent"
+        path = "/sys/class/power_supply/BAT%d/uevent"
         low_threshold = 10
 	last_full_capacity = true
-}
+}  
 
 disk "/" {
-        format = "%avail"
+        format = "Folders(🤨): %avail"
 }
 
 load {
-        format = "%1min"
+        format = "loads(⚠️): %1min"
 }
 
 memory {
-        #format = "%used | %available"
-        format = "MEM: %used/%available"
-        threshold_degraded = "1G"
+        #format = "%used | %available | %total"
+        #
+        format = "RAM: %used"
+        threshold_degraded = "2G"
+	threshold_critical = "1G"
         format_degraded = "MEMORY < %available"
 }
 
 tztime local {
+	
         format = "%Y-%m-%d %H:%M:%S"
 }
 
 volume first {
-	format = "V: %volume"
-	format_muted = "V: muted (%volume)"
+	format = "Vol(🔊): %volume"
+	format_muted = "Vol(🔇): muted"
 } 
