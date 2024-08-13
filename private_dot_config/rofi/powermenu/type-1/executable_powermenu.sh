@@ -20,6 +20,8 @@ host=`hostname`
 # Options
 shutdown=' Shutdown'
 reboot=' Reboot'
+#hibernate='⎌Hibernate'
+hibernate='💾Hibernate'
 lock=' Lock'
 suspend=' Suspend'
 logout=' Logout'
@@ -54,7 +56,8 @@ confirm_exit() {
 
 # Pass variables to rofi dmenu
 run_rofi() {
-	echo -e "$lock\n$suspend\n$logout\n$reboot\n$shutdown" | rofi_cmd
+	#echo -e "$lock\n$suspend\n$shutdown\n$reboot\n$logout" | rofi_cmd
+	echo -e "$suspend\n$shutdown\n$hibernate\n$reboot\n$logout" | rofi_cmd
 }
 
 # Execute Command
@@ -65,6 +68,8 @@ run_cmd() {
 			systemctl poweroff
 		elif [[ $1 == '--reboot' ]]; then
 			systemctl reboot
+		elif [[ $1 == '--hibernate' ]]; then
+			systemctl hibernate
 		elif [[ $1 == '--suspend' ]]; then
 			mpc -q pause
 			amixer set Master mute
@@ -94,13 +99,16 @@ case ${chosen} in
     $reboot)
 		run_cmd --reboot
         ;;
-    $lock)
-		if [[ -x '/usr/bin/betterlockscreen' ]]; then
-			betterlockscreen -l
-		elif [[ -x '/usr/bin/i3lock' ]]; then
-			i3lock
-		fi
+    $hibernate)
+		run_cmd --hibernate
         ;;
+    #$lock)
+    #    	if [[ -x '/usr/bin/betterlockscreen' ]]; then
+    #    		betterlockscreen -l
+    #    	elif [[ -x '/usr/bin/i3lock' ]]; then
+    #    		i3lock
+    #    	fi
+    #    ;;
     $suspend)
 		run_cmd --suspend
         ;;

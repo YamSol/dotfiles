@@ -45,11 +45,12 @@ battery 1 {
 }  
 
 disk "/" {
-        format = "Folders(🤨): %avail"
+        #format = "Folders(🤨): %avail"
+        format = "📁 / %avail"
 }
 
 load {
-        format = "loads(⚠️): %1min"
+        format = "⚠️ LOADS %1min"
 }
 
 memory {
@@ -67,6 +68,6 @@ tztime local {
 }
 
 volume first {
-	format = "Vol(🔊): %volume"
-	format_muted = "Vol(🔇): muted"
+	format = "🔊 VOL %volume"
+	format_muted = "🔇MUTED"
 } 

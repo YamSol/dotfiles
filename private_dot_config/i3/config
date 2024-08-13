@@ -6,7 +6,7 @@
 
 
 
-### SERVICES
+### 1. SERVICES
 
 # network manager
 exec --no-startup-id nm-applet
@@ -14,12 +14,15 @@ exec --no-startup-id nm-applet
 # clipboard
 exec --no-startup-id copyq
 
+# Power manager
+exec --no-startup-id xfce4-power-manager
+
 # code editor (depracieted: using systemd service insteed)
 #exec --no-startup-id emacs --daemon
 
 
 
-### CONFIG
+### 2. CONFIG
 
 # Start XDG autostart .desktop files using dex. See also https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
@@ -30,19 +33,16 @@ set $mod Mod4
 # grabs a logind suspend inhibit lock and use i3lock to lock the screen before suspend.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -i $LOCK_BG
 
-# # Lock screen timeout (secounds)
-# exec --no-startup-id xset s 4800
-
 # Load Wallpaper
 exec --no-startup-id nitrogen --restore
 
 # Border style <normal|1pixel|pixel xx|none|pixel>
-default_border pixel 10
+default_border pixel 5
 default_floating_border normal
 
 # Set inner/outer gaps
-gaps inner 5
-gaps outer -4
+#gaps inner 5
+gaps outer 5
 
 # Font
 font pango:JetBrains Mono:style=Regular 12
@@ -59,16 +59,23 @@ tiling_drag modifier titlebar
 
 # Start i3bar to display a workspace bar (plus the system information i3status finds out, if available)
 bar {
+	separator_symbol " | "
+	output eDP
 	tray_output primary
         status_command i3status
+}
+bar {
+	separator_symbol " | "
+	output HDMI-A-0
+        status_command i3status
+	font pango:JetBrains Mono:style=Regular 10
 }
 
 
 
-### KEYBINDS
+### 3. KEYBINDS
 
-
-## LAUNCH APPS
+## 3.1 LAUNCH APPS
 
 # Terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -95,13 +102,13 @@ bindsym $mod+F2 exec --no-startup-id firefox
 bindsym $mod+F3 exec --no-startup-id nautilus
 bindsym $mod+F5 exec "alacritty -e btop"
 
-## TOOLS
 
+## 3.2 TOOLS
 
 # Volume (in PulseAudio).
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status && notify-send 'Sound' '10% up' -t 1500
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status && notify-send 'Sound' '10% down' -t 1500
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
@@ -111,9 +118,9 @@ bindsym XF86AudioStop exec --no-startup-id playerctl stop;
 bindsym XF86AudioNext exec --no-startup-id playerctl next;
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous;
 
-#Brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+# Brightness
+bindsym XF86MonBrightnessUp   exec --no-startup-id brightnessctl set +5% && notify-send 'Brightness' '5% Up' -t 1500
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%- && notify-send 'Brightness' '5% Down' -t 1500
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -156,11 +163,14 @@ bindsym $mod+0 exec --no-startup-id ~/.config/rofi/scripts/powermenu_t1
 #    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
 #
 #    # exit system mode: "Enter" or "Escape"
-#    bindsym Return mode "default"
+#    bindsym Return exec --no-startup-id "i3-msg exit", mode "default"
 #    bindsym Escape mode "default"
 #}
 
-# resize window (you can also use the mouse for that)
+
+## 3.3 WINDOWS
+
+# 3.3.1 resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -169,16 +179,23 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym ccedilla resize grow width 10 px or 10 ppt
+        bindsym j        resize shrink width  10 px or 10 ppt
+        bindsym k        resize grow   height 10 px or 10 ppt
+        bindsym l        resize shrink height 10 px or 10 ppt
+        bindsym ccedilla resize grow   width  10 px or 10 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left  resize shrink width  10 px or 10 ppt
+        bindsym Down  resize grow   height 10 px or 10 ppt
+        bindsym Up    resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow   width  10 px or 10 ppt
+
+        # same bindings, but for the numeric-keyboard directional
+        # Left, Down, Up Right
+        bindcode 83 resize shrink width  10 px or 10 ppt
+        bindcode 88 resize grow   height 10 px or 10 ppt
+        bindcode 80 resize shrink height 10 px or 10 ppt
+        bindcode 85 resize grow   width  10 px or 10 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -186,70 +203,65 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-
-## WORKSPACE
-
-# change focus
+# 3.3.2 change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
 bindsym $mod+ccedilla focus right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
+# alternative 1
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
 bindsym $mod+Right focus right
+# alternative 2
+# Left, Down, Up Right
+bindcode $mod+83 focus left
+bindcode $mod+88 focus down
+bindcode $mod+80 focus up
+bindcode $mod+85 focus right
 
-# move focused window
+# 3.3.3 move focused window
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
 bindsym $mod+Shift+ccedilla move right
-
-# alternatively, you can use the cursor keys:
+# alternative 1
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+# alternative 2
 
-# split in horizontal orientation
+# 3.3.4 split in horizontal/vertical
 bindsym $mod+h split h
-
-# split in vertical orientation
 bindsym $mod+v split v
 
-# enter fullscreen mode for the focused container
+# 3.3.5 fullscreen mode
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
+# 3.3.6 change layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# toggle tiling / floating
+# 3.3.7 toggle tiling/floating
 bindsym $mod+Shift+space floating toggle
 
-# change focus between tiling / floating windows
+# 3.3.8 focus floating, parent, child
 bindsym $mod+space focus mode_toggle
-
-# focus the parent container
 bindsym $mod+a focus parent
-
-# focus the child container
 #bindsym $mod+d focus child
 
-# Scratchpad
-# move the currently focused window to the scratchpad
+# 3.3.9 Scratchpad
+# move to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
-# Show the next scratchpad window or hide the focused scratchpad window. If there are multiple scratchpad windows, this command cycles through them.
+# Show/hide next scratchpad window (it cycles through them)
 bindsym $mod+minus scratchpad show
 
-#navigate workspaces next / previous
-bindsym $mod+Ctrl+Right workspace next
-bindsym $mod+Ctrl+Left workspace prev
 
-# Define names for default workspaces for which we configure key bindings later on. We use variables to avoid repeating the names in multiple places.
+## 3.4 WORKSPACE
+
+# (aux) Define names for default workspaces
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -258,6 +270,13 @@ set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
+
+#navigate next/previous
+bindsym $mod+Ctrl+Right workspace next
+bindsym $mod+Ctrl+Left workspace prev
+# alternative 1
+bindcode $mod+89 workspace next
+bindcode $mod+81 workspace prev
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -269,7 +288,7 @@ bindsym $mod+6 workspace number $ws6
 bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 
-# move focused container to workspace
+# move container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
@@ -281,18 +300,18 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 
 
 
-### WINDOWS PREFERENCES
+### 4. WINDOWS PREFERENCES
 
 # Open applications on specific workspaces
-# assign [class="Thunderbird"] $ws1
-# assign [class="Pale moon"] $ws2
-# assign [class="Pcmanfm"] $ws3
-# assign [class="Skype"] $ws5
+assign [class="firefox"] $ws2
+assign [class="org.gnome.Nautilus"] $ws7
+assign [class="discord"] $ws3
+assign [class="slack"] $ws3
+assign [class="whatsie"] $ws3
 
 # Open specific applications in floating mode
 for_window [class="copyq"] floating enable border pixel 1 
 for_window [title="alsamixer"] floating enable border pixel 1
-for_window [class="calamares"] floating enable border normal
 for_window [class="Clipgrab"] floating enable
 for_window [title="File Transfer*"] floating enable
 for_window [class="fpakman"] floating enable
