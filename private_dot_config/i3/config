@@ -52,7 +52,10 @@ font pango:JetBrains Mono:style=Regular 12
 floating_modifier $mod
 
 # Focus follow mouse (False: follows new created windows)
-focus_follows_mouse no
+#focus_follows_mouse false
+
+# Window change for resizing, moving
+set $WIN_CHANGE 60
 
 # move tiling windows via drag & drop by left-clicking into the title bar, or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
@@ -107,8 +110,8 @@ bindsym $mod+F5 exec "alacritty -e btop"
 
 # Volume (in PulseAudio).
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status && notify-send 'Sound' '10% up' -t 1500
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status && notify-send 'Sound' '10% down' -t 1500
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status && notify-send 'Sound' '+10%' -t 1500
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status && notify-send 'Sound' '-10%' -t 1500
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
@@ -119,8 +122,9 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next;
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous;
 
 # Brightness
-bindsym XF86MonBrightnessUp   exec --no-startup-id brightnessctl set +5% && notify-send 'Brightness' '5% Up' -t 1500
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%- && notify-send 'Brightness' '5% Down' -t 1500
+bindsym XF86MonBrightnessUp   exec --no-startup-id brightnessctl set +10% && notify-send 'Brightness' '+10% Up' -t 1500
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%- && notify-send 'Brightness' '-10% Down' -t 1500
+
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -173,40 +177,33 @@ bindsym $mod+0 exec --no-startup-id ~/.config/rofi/scripts/powermenu_t1
 # 3.3.1 resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j        resize shrink width  10 px or 10 ppt
-        bindsym k        resize grow   height 10 px or 10 ppt
-        bindsym l        resize shrink height 10 px or 10 ppt
-        bindsym ccedilla resize grow   width  10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left  resize shrink width  10 px or 10 ppt
-        bindsym Down  resize grow   height 10 px or 10 ppt
-        bindsym Up    resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow   width  10 px or 10 ppt
-
-        # same bindings, but for the numeric-keyboard directional
+        # Grow/shrink width/height
+        bindsym j        resize shrink width  $WIN_CHANGE px or $WIN_CHANGE ppt
+        bindsym k        resize grow   height $WIN_CHANGE px or $WIN_CHANGE ppt
+        bindsym l        resize shrink height $WIN_CHANGE px or $WIN_CHANGE ppt
+        bindsym ccedilla resize grow   width  $WIN_CHANGE px or $WIN_CHANGE ppt
+        # alternative 1
+        bindsym Left  resize shrink width  $WIN_CHANGE px or 10 ppt
+        bindsym Down  resize grow   height $WIN_CHANGE px or 10 ppt
+        bindsym Up    resize shrink height $WIN_CHANGE px or 10 ppt
+        bindsym Right resize grow   width  $WIN_CHANGE px or 10 ppt
+        # alternative 2
         # Left, Down, Up Right
-        bindcode 83 resize shrink width  10 px or 10 ppt
-        bindcode 88 resize grow   height 10 px or 10 ppt
-        bindcode 80 resize shrink height 10 px or 10 ppt
-        bindcode 85 resize grow   width  10 px or 10 ppt
+        bindcode 83 resize shrink width  $WIN_CHANGE px or 10 ppt
+        bindcode 88 resize grow   height $WIN_CHANGE px or 10 ppt
+        bindcode 80 resize shrink height $WIN_CHANGE px or 10 ppt
+        bindcode 85 resize grow   width  $WIN_CHANGE px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
+        # exit mode
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
 
 # 3.3.2 change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
+bindsym $mod+j focus  left
+bindsym $mod+k focus  down
+bindsym $mod+l focus  up
 bindsym $mod+ccedilla focus right
 # alternative 1
 bindsym $mod+Left  focus left
@@ -221,16 +218,21 @@ bindcode $mod+80 focus up
 bindcode $mod+85 focus right
 
 # 3.3.3 move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+ccedilla move right
+bindsym $mod+Shift+j        move left  $WIN_CHANGE
+bindsym $mod+Shift+k        move down  $WIN_CHANGE
+bindsym $mod+Shift+l        move up    $WIN_CHANGE
+bindsym $mod+Shift+ccedilla move right $WIN_CHANGE
 # alternative 1
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Left  move left  $WIN_CHANGE
+bindsym $mod+Shift+Down  move down  $WIN_CHANGE
+bindsym $mod+Shift+Up    move up    $WIN_CHANGE
+bindsym $mod+Shift+Right move right $WIN_CHANGE
 # alternative 2
+# Left, Down, Up Right
+bindcode $mod+Shift+83 move left  $WIN_CHANGE
+bindcode $mod+Shift+88 move down  $WIN_CHANGE
+bindcode $mod+Shift+80 move up    $WIN_CHANGE
+bindcode $mod+Shift+85 move right $WIN_CHANGE
 
 # 3.3.4 split in horizontal/vertical
 bindsym $mod+h split h
@@ -302,12 +304,16 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 
 ### 4. WINDOWS PREFERENCES
 
+# switch to workspace with urgent window automatically
+#for_window [urgent="latest"] focus
+focus_on_window_activation focus
+
 # Open applications on specific workspaces
 assign [class="firefox"] $ws2
 assign [class="org.gnome.Nautilus"] $ws7
-assign [class="discord"] $ws3
-assign [class="slack"] $ws3
-assign [class="whatsie"] $ws3
+assign [class="Discord"] $ws3
+assign [class="Slack"] $ws3
+assign [class="WhatSie"] $ws3
 
 # Open specific applications in floating mode
 for_window [class="copyq"] floating enable border pixel 1 
@@ -337,7 +343,4 @@ for_window [class="Skype"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
-
-# switch to workspace with urgent window automatically
-for_window [urgent=latest] focus
 
