@@ -6,8 +6,12 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-;; (setq user-full-name "John Doe"
-;;       user-mail-address "john@doe.com")
+(setq user-full-name "Yam Sol Britto Bertamini"
+      user-mail-address "yambertamini.sol@gmail.com"
+      doom-theme 'tsdh-dark
+      display-line-numbers-type 'relative
+
+      )
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -29,14 +33,15 @@
 ;; refresh your font settings. If Emacs still can't find your font, it likely
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
 
+;; THEME
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'tsdh-dark)
+
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type 'relative)
+
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -78,3 +83,31 @@
 (setq shell-file-name (executable-find "bash"))
 ;;(setq-default vterm-shell (executable-find "fish"))
 ;;(setq-default explicit-shell-file-name (executable-find "fish"))
+
+
+
+;; DON'T WORK WITH IT
+;;1º-WAY (use-package! exec-path-from-shell
+;;   :init
+;;   ;; (setq exec-path-from-shell-startup-files nil
+;;   ;;       exec-path-from-shell-variables '("PATH" "MANPATH")
+;;   ;;       exec-path-from-shell-arguments '("-l"))
+;;   (exec-path-from-shell-initialize)
+;;   :config
+;;   (exec-path-from-shell-copy-envs '("SSH_AUTH_SOCK" "SSH_AGENT_PID"))
+;;2º-WAY (after! doom-cli-env
+;;   (add-to-list 'doom-env-allow "^SSH_"))
+;;3º-WAY (require 'exec-path-from-shell)
+;; (dolist (var '("SSH_AUTH_SOCK" "SSH_AGENT_PID" "GPG_AGENT_INFO" "LANG" "LC_CTYPE" "NIX_SSL_CERT_FILE" "NIX_PATH"))
+;;   (add-to-list 'exec-path-from-shell-variables var))
+
+;; (use-package! keychain-environment)
+;; (after! keychain-environment (keychain-refresh-environment))
+
+(keychain-refresh-environment)
+(setenv "SSH_AUTH_SOCK" (getenv "SSH_AUTH_SOCK"))
+(setenv "SSH_AGENT_PID" (getenv "SSH_AGENT_PID"))
+
+;; (shell-command "keychain --eval --agents ssh")
+;; (getenv "SSH_AUTH_SOCK")
+;; (getenv "SSH_AGENT_PID")

@@ -39,7 +39,7 @@
   "ui.dark_theme_variant": true,
   "ui.rendered_tile_cache_size": 16384,
   "saving.default_format": "openraster",
-  "brushmanager.selected_brush": "classic/brush",
+  "brushmanager.selected_brush": "kaerhon_v1/inkster_l",
   "brushmanager.selected_groups": [],
   "frame.color_rgba": [
     0.12,
@@ -72,7 +72,7 @@
         }
       ],
       "w": 320,
-      "h": 920
+      "h": 948
     },
     "right_sidebar": {
       "groups": [
@@ -81,14 +81,11 @@
             [
               "MyPaintBrushGroupTool",
               "Classic"
-            ],
-            [
-              "MyPaintModeOptionsTool"
             ]
           ],
-          "active_page": 1,
+          "active_page": 0,
           "w": 243,
-          "h": 434
+          "h": 229
         },
         {
           "tools": [
@@ -98,7 +95,17 @@
           ],
           "active_page": 0,
           "w": 243,
-          "h": 474
+          "h": 237
+        },
+        {
+          "tools": [
+            [
+              "MyPaintModeOptionsTool"
+            ]
+          ],
+          "active_page": 0,
+          "w": 243,
+          "h": 441
         },
         {
           "tools": [],
@@ -106,14 +113,14 @@
         }
       ],
       "w": 243,
-      "h": 920
+      "h": 948
     },
     "floating": [],
     "position": {
-      "x": 1921,
-      "y": 25,
-      "w": 1898,
-      "h": 1019
+      "x": 1920,
+      "y": 0,
+      "w": 1910,
+      "h": 1047
     },
     "autohide": true,
     "fullscreen": false,
@@ -472,10 +479,10 @@
   "ui.file_compat_warning_mild": true,
   "ui.file_compat_warning_severe": true,
   "colors.history": [
-    "#78b4ff",
     "#0047ab",
     "#ffa811",
     "#15221d",
+    "#000000",
     "#d10000"
   ],
   "brush_chooser.default.window_size": [
@@ -486,11 +493,11 @@
     256,
     264
   ],
-  "devbrush.last_used": "Wacom One by Wacom S Pen stylus",
   "color_chooser.fast_subset.window_size": [
     282,
     322
   ],
   "color_chooser.fast_subset.selected_adjuster": "PaletteTool",
-  "brush_chooser.default.selected_group": "Classic"
+  "brush_chooser.default.selected_group": "Experimental",
+  "scratchpad.last_opened": "/home/m4ster/.local/share/mypaint/scratchpads/autosave.ora"
 }

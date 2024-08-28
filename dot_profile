@@ -16,21 +16,26 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
+# ADD TO PATH
+#
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
-
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+# LOAD Xkeys
+#
 xmodmap $HOME/.Xmodmap
 
-export EDITOR=vim
+# EXPORTS
+#
+export EDITOR="emacsclient -t"
 export TERMINAL=alacritty
-
 export GITHUB_USERNAME="Yam Sol"
-export LOCK_BG="/home/m4ster/Pictures/wallpapers/cyber-samurai.png"
+#export LOCK_BG="/home/m4ster/Pictures/wallpapers/cyber-samurai.png"
+export LOCK_BG="/home/m4ster/Pictures/wallpapers/grim-reaper.png"
 export ROFI_THEME="/usr/share/rofi/themes/Arc-Dark.rasi"
