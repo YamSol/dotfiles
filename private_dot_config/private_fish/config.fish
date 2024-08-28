@@ -1,47 +1,53 @@
-if status is-interactive
-    # Commands to run in interactive sessions can go here
+#if status is-interactive
+#    # Commands to run in interactive sessions can go here
+#
+#end
 
-end
-
-# ASDF 
+# LOADING ===================
+# asdf
 source ~/.asdf/asdf.fish
 
-# LOAD KEYCHAIN FOR SSH
+# ssh-keychain
 type -q keychain > /dev/null; and keychain --agents ssh > /dev/null
 
-# PATH APPENDs
+# PATH STUFF ===================
+# Path appends
 fish_add_path -m ~/.local/bin
 fish_add_path -m ~/bin
-fish_add_path ~/.config/emacs/bin
 fish_add_path ~/.config/rofi/scripts
+fish_add_path ~/.config/emacs/bin
 
-# GLOBAL ENV
+# global env
 #set -Ux TERMINAL=
-
-#ALIAS
+#
+#ALIAS ===================
 alias sa="sudo apt"
   alias sai="sa install"
   alias sas="apt search" # not actually 'sudo'
   alias sau="sa update"
 alias e="emacsclient -t"
 
-function pws # print working size
+# PERSONAL FUNCTIONS ===================
+# Print working size
+function pws
     echo $(du -sh 2>/dev/null | awk '{print $1}')
 end
 
+# Chezmoi improved funcion. Add all changes from config to Chezmois' repository.
 function chezmoi-addd
-  chezmoi add $(chezmoi status | awk '{print $2}') &
-  cd ~/.local/share/chezmoi &
-  git status
+  set prev_path $(pwd)
+  chezmoi add $(chezmoi status | awk '{print $2}') 2>/dev/null
+  cd ~/.local/share/chezmoi && git status
+  cd $prev_path
 end
-
+# chezmoi-addd function improved. Also commits, pull and push changes.
 function chezmoi-addD
-  chezmoi-addd &
-  git add . &
-  git commit -m "$(date --iso-8601)" &
-  git pull &
-  git push
+  set prev_path $(pwd)
+  chezmoi add $(chezmoi status | awk '{print $2}') 2>/dev/null
+  cd ~/.local/share/chezmoi &&
+    git add . &&
+    git commit -m "$(date --iso-8601)" &&
+    git pull &&
+    git push
+  cd $prev_path
 end
-
-
-# PERSONAL FUNCTIONS
