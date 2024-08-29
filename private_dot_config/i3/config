@@ -7,7 +7,10 @@
 ### 0. VARIABLES
 
 # Mod Key
+# Super key
 set $mod Mod4
+# Alt
+set $alt Mod1
 
 # Window change for resizing, moving
 set $WIN_CHANGE 60
@@ -314,11 +317,11 @@ bindsym $mod+minus scratchpad show
 ## 3.4 WORKSPACE
 
 # (aux) Define names for default workspaces
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
+set $ws1 "1-communication"
+set $ws2 "2-code"
+set $ws3 "3-web"
 set $ws4 "4"
-set $ws5 "5"
+set $ws5 "5-media"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
@@ -331,66 +334,72 @@ bindcode $mod+89 workspace next
 bindcode $mod+81 workspace prev
 
 # switch to workspace
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
 
 # move container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
 
-
+# move workspace to display
+bindsym $mod+Shift+$alt+Left  move workspace to output left
+bindsym $mod+Shift+$alt+Down  move workspace to output down
+bindsym $mod+Shift+$alt+Up    move workspace to output up
+bindsym $mod+Shift+$alt+Right move workspace to output right
 
 ### 4. WINDOWS PREFERENCES
+
+# ##  (until now, can't asign value of variable to another)
+# set $comms "$ws1"
+# set $web "$ws3"
 
 # switch to workspace with urgent window automatically
 #for_window [urgent="latest"] focus
 focus_on_window_activation focus
 
 # Open applications on specific workspaces
-assign [class="firefox"] $ws2
-#assign [class="org.gnome.Nautilus"] $ws7
-assign [class="Discord"] $ws3
-assign [class="Slack"] $ws3
-assign [class="WhatSie"] $ws3
+assign [class="Discord"] $ws1
+assign [class="Slack"]   $ws1
+assign [class="WhatSie"] $ws1
+assign [class="firefox"] $ws3
+#assign [class="org.gnome.Nautilus"] $ws?
 
 # Open specific applications in floating mode
-for_window [class="copyq"] floating enable border pixel 1 
-for_window [title="alsamixer"] floating enable border pixel 1
-for_window [class="Clipgrab"] floating enable
-for_window [title="File Transfer*"] floating enable
-for_window [class="fpakman"] floating enable
-for_window [class="Galculator"] floating enable border pixel 1
-for_window [class="GParted"] floating enable border normal
-for_window [title="i3_help"] floating enable sticky enable border normal
-for_window [class="Lightdm-settings"] floating enable
-for_window [class="Lxappearance"] floating enable sticky enable border normal
-for_window [class="Manjaro-hello"] floating enable
-for_window [class="Manjaro Settings Manager"] floating enable border normal
-for_window [title="MuseScore: Play Panel"] floating enable
-for_window [class="Nitrogen"] floating enable sticky enable border normal
+set $float floating enable
+set $sticky sticky enable
+for_window [class="copyq"] $float
+for_window [title="alsamixer"] $float
+for_window [class="Clipgrab"] $float
+for_window [title="File Transfer*"] $float
+for_window [class="fpakman"] $float
+for_window [class="Galculator"] $float
+for_window [class="GParted"] $float
+for_window [title="i3_help"] $float
+for_window [class="Lightdm-settings"] $float
+for_window [class="Lxappearance"] $float
+for_window [class="Manjaro-hello"] $float
+for_window [class="Manjaro Settings Manager"] $float
+for_window [title="MuseScore: Play Panel"] $float
+for_window [class="Nitrogen"] $float
 for_window [class="Oblogout"] fullscreen enable
-for_window [class="octopi"] floating enable
-for_window [title="About Pale Moon"] floating enable
-for_window [class="Pamac-manager"] floating enable
-for_window [class="Pavucontrol"] floating enable
-for_window [class="qt5ct"] floating enable sticky enable border normal
-for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
-for_window [class="Simple-scan"] floating enable border normal
-for_window [class="(?i)System-config-printer.py"] floating enable border normal
-for_window [class="Skype"] floating enable border normal
-for_window [class="Timeset-gui"] floating enable border normal
-for_window [class="(?i)virtualbox"] floating enable border normal
-for_window [class="Xfburn"] floating enable
-
+for_window [class="octopi"] $float
+for_window [class="Pamac-manager"] $float
+for_window [class="Pavucontrol"] $float
+for_window [class="qt5ct"] $float
+for_window [class="Qtconfig-qt4"] $float
+for_window [class="Simple-scan"] $float
+for_window [class="(?i)System-config-printer.py"] $float
+for_window [class="Timeset-gui"] $float
+for_window [class="(?i)virtualbox"] $float
