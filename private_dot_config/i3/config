@@ -195,40 +195,40 @@ bindsym $mod+0 exec --no-startup-id ~/.config/rofi/scripts/powermenu_t1
 bindsym $mod+r mode "resize"
 mode "resize" {
         # Grow/shrink width/height
-        bindsym j        resize shrink width  $WIN_CHANGE px or $WIN_CHANGE ppt
-        bindsym k        resize grow   height $WIN_CHANGE px or $WIN_CHANGE ppt
-        bindsym l        resize shrink height $WIN_CHANGE px or $WIN_CHANGE ppt
-        bindsym ccedilla resize grow   width  $WIN_CHANGE px or $WIN_CHANGE ppt
-        # alternative 1
         bindsym Left  resize shrink width  $WIN_CHANGE px or 10 ppt
         bindsym Down  resize grow   height $WIN_CHANGE px or 10 ppt
         bindsym Up    resize shrink height $WIN_CHANGE px or 10 ppt
         bindsym Right resize grow   width  $WIN_CHANGE px or 10 ppt
-        # alternative 2
-        # Left, Down, Up Right
-        bindcode 83 resize shrink width  $WIN_CHANGE px or 10 ppt
-        bindcode 88 resize grow   height $WIN_CHANGE px or 10 ppt
-        bindcode 80 resize shrink height $WIN_CHANGE px or 10 ppt
-        bindcode 85 resize grow   width  $WIN_CHANGE px or 10 ppt
+        # # alternative 1
+        # bindsym j        resize shrink width  $WIN_CHANGE px or $WIN_CHANGE ppt
+        # bindsym k        resize grow   height $WIN_CHANGE px or $WIN_CHANGE ppt
+        # bindsym l        resize shrink height $WIN_CHANGE px or $WIN_CHANGE ppt
+        # bindsym ccedilla resize grow   width  $WIN_CHANGE px or $WIN_CHANGE ppt
+        # # alternative 2
+        # # Left, Down, Up Right
+        # bindcode 83 resize shrink width  $WIN_CHANGE px or 10 ppt
+        # bindcode 88 resize grow   height $WIN_CHANGE px or 10 ppt
+        # bindcode 80 resize shrink height $WIN_CHANGE px or 10 ppt
+        # bindcode 85 resize grow   width  $WIN_CHANGE px or 10 ppt
 
 
         # SAME, but /2 of the change
 
-        bindsym Ctrl+j        resize shrink width  $WIN_CHANGE_1_2 px or $WIN_CHANGE_1_2 ppt
-        bindsym Ctrl+k        resize grow   height $WIN_CHANGE_1_2 px or $WIN_CHANGE_1_2 ppt
-        bindsym Ctrl+l        resize shrink height $WIN_CHANGE_1_2 px or $WIN_CHANGE_1_2 ppt
-        bindsym Ctrl+ccedilla resize grow   width  $WIN_CHANGE_1_2 px or $WIN_CHANGE_1_2 ppt
-        # alternative 1
         bindsym Ctrl+Left  resize shrink width  $WIN_CHANGE_1_2 px or 10 ppt
         bindsym Ctrl+Down  resize grow   height $WIN_CHANGE_1_2 px or 10 ppt
         bindsym Ctrl+Up    resize shrink height $WIN_CHANGE_1_2 px or 10 ppt
         bindsym Ctrl+Right resize grow   width  $WIN_CHANGE_1_2 px or 10 ppt
-        # alternative 2
-        # Left, Down, Up Right
-        bindcode Ctrl+83 resize shrink width  $WIN_CHANGE_1_2 px or 10 ppt
-        bindcode Ctrl+88 resize grow   height $WIN_CHANGE_1_2 px or 10 ppt
-        bindcode Ctrl+80 resize shrink height $WIN_CHANGE_1_2 px or 10 ppt
-        bindcode Ctrl+85 resize grow   width  $WIN_CHANGE_1_2 px or 10 ppt
+        # # alternative 1
+        # bindsym Ctrl+j        resize shrink width  $WIN_CHANGE_1_2 px or $WIN_CHANGE_1_2 ppt
+        # bindsym Ctrl+k        resize grow   height $WIN_CHANGE_1_2 px or $WIN_CHANGE_1_2 ppt
+        # bindsym Ctrl+l        resize shrink height $WIN_CHANGE_1_2 px or $WIN_CHANGE_1_2 ppt
+        # bindsym Ctrl+ccedilla resize grow   width  $WIN_CHANGE_1_2 px or $WIN_CHANGE_1_2 ppt
+        # # alternative 2
+        # # Left, Down, Up Right
+        # bindcode Ctrl+83 resize shrink width  $WIN_CHANGE_1_2 px or 10 ppt
+        # bindcode Ctrl+88 resize grow   height $WIN_CHANGE_1_2 px or 10 ppt
+        # bindcode Ctrl+80 resize shrink height $WIN_CHANGE_1_2 px or 10 ppt
+        # bindcode Ctrl+85 resize grow   width  $WIN_CHANGE_1_2 px or 10 ppt
 
         # exit mode
         bindsym Return mode "default"
@@ -237,55 +237,55 @@ mode "resize" {
 }
 
 # 3.3.2 change focus
-bindsym $mod+j focus  left
-bindsym $mod+k focus  down
-bindsym $mod+l focus  up
-bindsym $mod+ccedilla focus right
-# alternative 1
 bindsym $mod+Left  focus left
 bindsym $mod+Down  focus down
 bindsym $mod+Up    focus up
 bindsym $mod+Right focus right
-# alternative 2
-# Left, Down, Up Right
-bindcode $mod+83 focus left
-bindcode $mod+88 focus down
-bindcode $mod+80 focus up
-bindcode $mod+85 focus right
+# # alternative 1
+# bindsym $mod+j focus  left
+# bindsym $mod+k focus  down
+# bindsym $mod+l focus  up
+# bindsym $mod+ccedilla focus right
+# # alternative 2
+# # Left, Down, Up Right
+# bindcode $mod+83 focus left
+# bindcode $mod+88 focus down
+# bindcode $mod+80 focus up
+# bindcode $mod+85 focus right
 
 # 3.3.3 move focused window
-bindsym $mod+Shift+j        move left  $WIN_CHANGE
-bindsym $mod+Shift+k        move down  $WIN_CHANGE
-bindsym $mod+Shift+l        move up    $WIN_CHANGE
-bindsym $mod+Shift+ccedilla move right $WIN_CHANGE
-# alternative 1
 bindsym $mod+Shift+Left  move left  $WIN_CHANGE
 bindsym $mod+Shift+Down  move down  $WIN_CHANGE
 bindsym $mod+Shift+Up    move up    $WIN_CHANGE
 bindsym $mod+Shift+Right move right $WIN_CHANGE
-# alternative 2
-# Left, Down, Up Right
-bindcode $mod+Shift+83 move left  $WIN_CHANGE
-bindcode $mod+Shift+88 move down  $WIN_CHANGE
-bindcode $mod+Shift+80 move up    $WIN_CHANGE
-bindcode $mod+Shift+85 move right $WIN_CHANGE
+# # alternative 1
+# bindsym $mod+Shift+j        move left  $WIN_CHANGE
+# bindsym $mod+Shift+k        move down  $WIN_CHANGE
+# bindsym $mod+Shift+l        move up    $WIN_CHANGE
+# bindsym $mod+Shift+ccedilla move right $WIN_CHANGE
+# # alternative 2
+# # Left, Down, Up Right
+# bindcode $mod+Shift+83 move left  $WIN_CHANGE
+# bindcode $mod+Shift+88 move down  $WIN_CHANGE
+# bindcode $mod+Shift+80 move up    $WIN_CHANGE
+# bindcode $mod+Shift+85 move right $WIN_CHANGE
 
 # 3.3.3.1 SAME, but 1/2 of the change
-bindsym $mod+Ctrl+Shift+j        move left  $WIN_CHANGE_1_2
-bindsym $mod+Ctrl+Shift+k        move down  $WIN_CHANGE_1_2
-bindsym $mod+Ctrl+Shift+l        move up    $WIN_CHANGE_1_2
-bindsym $mod+Ctrl+Shift+ccedilla move right $WIN_CHANGE_1_2
-# alternative 1
 bindsym $mod+Ctrl+Shift+Left  move left  $WIN_CHANGE_1_2
 bindsym $mod+Ctrl+Shift+Down  move down  $WIN_CHANGE_1_2
 bindsym $mod+Ctrl+Shift+Up    move up    $WIN_CHANGE_1_2
 bindsym $mod+Ctrl+Shift+Right move right $WIN_CHANGE_1_2
-# alternative 2
-# Left, Down, Up Right
-bindcode $mod+Ctrl+Shift+83 move left  $WIN_CHANGE_1_2
-bindcode $mod+Ctrl+Shift+88 move down  $WIN_CHANGE_1_2
-bindcode $mod+Ctrl+Shift+80 move up    $WIN_CHANGE_1_2
-bindcode $mod+Ctrl+Shift+85 move right $WIN_CHANGE_1_2
+# # alternative 1
+# bindsym $mod+Ctrl+Shift+j        move left  $WIN_CHANGE_1_2
+# bindsym $mod+Ctrl+Shift+k        move down  $WIN_CHANGE_1_2
+# bindsym $mod+Ctrl+Shift+l        move up    $WIN_CHANGE_1_2
+# bindsym $mod+Ctrl+Shift+ccedilla move right $WIN_CHANGE_1_2
+# # alternative 2
+# # Left, Down, Up Right
+# bindcode $mod+Ctrl+Shift+83 move left  $WIN_CHANGE_1_2
+# bindcode $mod+Ctrl+Shift+88 move down  $WIN_CHANGE_1_2
+# bindcode $mod+Ctrl+Shift+80 move up    $WIN_CHANGE_1_2
+# bindcode $mod+Ctrl+Shift+85 move right $WIN_CHANGE_1_2
 
 # 3.3.4 split in horizontal/vertical
 bindsym $mod+h split h
