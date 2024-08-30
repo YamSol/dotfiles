@@ -20,9 +20,8 @@ host=`hostname`
 # Options
 shutdown=' Shutdown'
 reboot=' Reboot'
-#hibernate='⎌Hibernate'
 hibernate='💾Hibernate'
-lock=' Lock'
+# lock=' Lock'
 suspend=' Suspend'
 logout=' Logout'
 yes=' Yes'
@@ -56,8 +55,13 @@ confirm_exit() {
 
 # Pass variables to rofi dmenu
 run_rofi() {
-	#echo -e "$lock\n$suspend\n$shutdown\n$reboot\n$logout" | rofi_cmd
-	echo -e "$suspend\n$shutdown\n$hibernate\n$reboot\n$logout" | rofi_cmd
+	# $hibernate
+    # $lock
+    # $logout
+    # $suspend
+    # $shutdown
+    # $reboot
+	echo -e "$shutdown\n$hibernate\n$suspend\n$reboot\n$logout" | rofi_cmd
 }
 
 # Execute Command

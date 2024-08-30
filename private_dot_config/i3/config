@@ -379,6 +379,8 @@ assign [class="firefox"] $ws3
 # Open specific applications in floating mode
 set $float floating enable
 set $sticky sticky enable
+# Firefox picture-in-picture mode open on sticky
+for_window [title="^Picture-in-Picture$"] $sticky
 for_window [class="copyq"] $float
 for_window [title="alsamixer"] $float
 for_window [class="Clipgrab"] $float
