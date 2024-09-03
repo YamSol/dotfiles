@@ -30,28 +30,54 @@ markup=none
 #
 # If the instance is not specified, use the interface used for default route.
 # The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
-[iface]
-#IFACE=wlan0
-color=#00FF00
+# [iface]
+# #IFACE=wlan0
+# color=#00FF00
+# interval=10
+# separator=false
+# [wifi]
+# #INTERFACE=wlp3s0
+# label=wifi:
+# interval=10
+# separator=false
+# [bandwidth]
+# #INTERFACE=eth0
+# interval=2
+
+# CPU usage
+#
+# The script may be called with -w and -c switches to specify thresholds,
+# see the script for details.
+[load_average]
+# label=LOAD
+label=⚠ (loads︎)
 interval=10
-separator=false
-[wifi]
-#INTERFACE=wlp3s0
-label=wifi:
+[cpu_usage]
+# label=CPU
+label=⏲ (cpu)
 interval=10
+
+# Temperature
+[temperature]
+command=$MYSCRIPTS/temperature/temperature
+label=TEMP
+interval=10
+#T_WARN=70
+#T_CRIT=90
+#SENSOR_CHIP=""
+min_width=150
 separator=false
-[bandwidth]
-#INTERFACE=eth0
-interval=2
 
 # Volume indicator
 #
 # The first parameter sets the step (and units to display)
 # The second parameter overrides the mixer selection
 # See the script for details.
+# 🎧 🎝  
 [volume]
-#label=♪
-label=VOL
+label=♪
+# label=ggc
+# label=VOL
 interval=repeat
 signal=10
 #STEP=5%
@@ -60,6 +86,7 @@ signal=10
 #
 [memory]
 label=RAM
+label=🗂
 separator=false
 interval=15
 # [memory]
@@ -74,7 +101,8 @@ interval=15
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
 [disk_home]
-label=~/
+# label=~/
+label=
 instance=~
 interval=30
 command=python3 $MYSCRIPTS/disk_usage/disk_usage format="{used:.1f}G " #"({total:.0f})"
@@ -84,32 +112,25 @@ command=python3 $MYSCRIPTS/disk_usage/disk_usage format="{used:.1f}G " #"({total
 # interval=30
 # command=python3 $MYSCRIPTS/disk_usage/disk_usage
 
-# CPU usage
-#
-# The script may be called with -w and -c switches to specify thresholds,
-# see the script for details.
-[cpu_usage]
-label=CPU
-interval=10
-min_width=CPU 100.00%
-separator=false
-
-[load_average]
-label=LOAD
-interval=10
-
 # Battery indicator
 #
 # The battery instance defaults to 0.
+# 🔋
 [battery]
 #label=BAT
-label=⚡
+# colored emoji
+#label=⚡
+# unicode
+label=⚡︎
 interval=30
 
 # Date Time
 #
 [time]
-label=🗓️
+# colored emoji
+# label=🗓️
+# unicode
+label=🗓
 command=date '+%Y-%m-%d %H:%M:%S'
 interval=5
 
@@ -152,8 +173,8 @@ interval=5
 #interval=once
 #signal=11
 
-#[keyindicator]
-#KEY=NUM
-#markup=pango
-#interval=once
-#signal=11
+# [keyindicator]
+# KEY=NUM
+# markup=pango
+# interval=once
+# signal=11

@@ -50,3 +50,4 @@
 ;; (unpin! t)
 
 (package! keychain-environment)
+(package! forge)
