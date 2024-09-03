@@ -241,17 +241,21 @@ bindsym $mod+Left  focus left
 bindsym $mod+Down  focus down
 bindsym $mod+Up    focus up
 bindsym $mod+Right focus right
-# # alternative 1
+# alternative 1
 # bindsym $mod+j focus  left
 # bindsym $mod+k focus  down
 # bindsym $mod+l focus  up
 # bindsym $mod+ccedilla focus right
-# # alternative 2
-# # Left, Down, Up Right
-# bindcode $mod+83 focus left
-# bindcode $mod+88 focus down
-# bindcode $mod+80 focus up
-# bindcode $mod+85 focus right
+# alternative 2
+# Left, Down, Up Right
+bindcode $mod+83 focus left
+bindcode $mod+88 focus down
+bindcode $mod+80 focus up
+bindcode $mod+85 focus right
+# alternative 3
+bindcode $mod+89 focus right
+bindcode $mod+81 focus left
+
 
 # 3.3.3 move focused window
 bindsym $mod+Shift+Left  move left  $WIN_CHANGE
@@ -330,8 +334,8 @@ set $ws8 "8"
 bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 # alternative 1
-bindcode $mod+89 workspace next
-bindcode $mod+81 workspace prev
+bindcode $mod+Ctrl+89 workspace next
+bindcode $mod+Ctrl+81 workspace prev
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
