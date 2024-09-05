@@ -8,7 +8,7 @@
 ;; clients, file templates and snippets. It is optional.
 (setq user-full-name "Yam Sol Britto Bertamini"
       user-mail-address "yambertamini.sol@gmail.com"
-      doom-theme 'tsdh-dark
+      doom-theme 'manoj-dark ;; 'tsdh-dark
       display-line-numbers-type 'relative
 
       )

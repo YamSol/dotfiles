@@ -20,9 +20,10 @@
 # urgent ]
 
 # GLOBAL PROPERTIES:
-# Change $DEFAULT_SCRIPTS to the location of default scripts!
-# Change $MYSCRIPTS to the location of your scripts!
-command=$DEFAULT_SCRIPTS/$BLOCK_NAME
+# - $SCRIPT_DIR: location of default scripts
+# - $MYSCRIPTS: Personal scripts scripts
+command=$MYSCRIPTS/$BLOCK_NAME/$BLOCK_NAME
+# command=$SCRIPT_DIR/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
@@ -51,6 +52,7 @@ markup=none
 [load_average]
 # label=LOAD
 label=⚠ (loads︎)
+label=tempaa
 interval=10
 [cpu_usage]
 # label=CPU
@@ -59,7 +61,6 @@ interval=10
 
 # Temperature
 [temperature]
-command=$MYSCRIPTS/temperature/temperature
 label=TEMP
 interval=10
 #T_WARN=70

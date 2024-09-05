@@ -12,10 +12,10 @@ x-prop-underscan_hborder 0
 x-prop-underscan_vborder 0
 output HDMI-A-0
 crtc 0
-mode 1920x1080
+mode 1920x1080_75.00
 pos 1920x0
 primary
-rate 60.00
+rate 75.00
 x-prop-max_bpc 8
 x-prop-non_desktop 0
 x-prop-scaling_mode None
