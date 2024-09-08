@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+bin_folder="$HOME/bin"
+
+if [[ -n $1 ]]; then
+    script_fullpath="$bin_folder/$1"
+else
+    echo "Usage: new-script <script-name>"
+    exit 1
+fi
+
+
+if [ ! -d $bin_folder ]; then
+   mkdir $bin_folder
+fi &&
+touch $script_fullpath &&
+chmod +x $script_fullpath &&
+$EDITOR $script_fullpath

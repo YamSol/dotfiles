@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+sudo input-remapper-control --device "Kingston HyperX Pulsefire Core" --command $1
