@@ -52,7 +52,6 @@ markup=none
 [load_average]
 # label=LOAD
 label=⚠ (loads︎)
-label=tempaa
 interval=10
 [cpu_usage]
 # label=CPU

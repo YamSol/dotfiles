@@ -36,6 +36,6 @@ xmodmap $HOME/.Xmodmap
 export EDITOR="emacsclient -t"
 export TERMINAL=alacritty
 export GITHUB_USERNAME="Yam Sol"
-#export LOCK_BG="/home/m4ster/Pictures/wallpapers/cyber-samurai.png"
 export LOCK_BG="/home/m4ster/Pictures/wallpapers/grim-reaper.png"
 export ROFI_THEME="/usr/share/rofi/themes/Arc-Dark.rasi"
+export SCRIPTS_DIR="$HOME"/bin/scripts/
