@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-windows_device="/dev/nvme0n1p3"
-windows_mnt="/mnt/windows/"
-
-sudo mount $windows_device -t ntfs-3g $windows_mnt
