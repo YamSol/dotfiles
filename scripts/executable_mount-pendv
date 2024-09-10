@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+pendv_dev=/dev/sdb1
+pendv_mnt=/mnt/pendv/
+
+sudo mount $pendv_dev $pendv_mnt
