@@ -14,6 +14,7 @@ type -q keychain > /dev/null; and keychain --agents ssh > /dev/null
 # Path appends
 fish_add_path -m ~/.local/bin
 fish_add_path -m ~/bin
+fish_add_path -m ~/opt
 fish_add_path ~/.config/rofi/scripts
 fish_add_path ~/.config/emacs/bin
 
