@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-list-sizes $1 | sort | uniq -c | sort -nr

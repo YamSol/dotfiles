@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-for i in $(ls $1 --size | awk '{print $1}'); do
-    if [[ $i =~ ^[0-9]+$ ]]; then
-       echo $((i / 1024))
-    fi;
-done;
