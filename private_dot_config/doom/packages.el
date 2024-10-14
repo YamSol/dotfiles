@@ -51,3 +51,6 @@
 
 (package! keychain-environment)
 (package! forge)
+(package! pdf-tools)
+(package! circe)
+(package! circe-notifications)

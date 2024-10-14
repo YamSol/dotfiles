@@ -53,20 +53,20 @@ markup=none
 # label=LOAD
 label=⚠ (loads︎)
 interval=10
-[cpu_usage]
-# label=CPU
-label=⏲ (cpu)
-interval=10
+# [cpu_usage]
+# # label=CPU
+# label=⏲ (cpu)
+# interval=10
 
 # Temperature
-[temperature]
-label=TEMP
-interval=10
-#T_WARN=70
-#T_CRIT=90
-#SENSOR_CHIP=""
-min_width=150
-separator=false
+# [temperature]
+# label=TEMP
+# interval=10
+# #T_WARN=70
+# #T_CRIT=90
+# #SENSOR_CHIP=""
+# min_width=150
+# separator=false
 
 # Volume indicator
 #
@@ -86,9 +86,10 @@ signal=10
 #
 [memory]
 label=RAM
-label=🗂
+# label=🗂
 separator=false
 interval=15
+command=$MYSCRIPTS/$BLOCK_NAME/$BLOCK_NAME PERCENT=false
 # [memory]
 # label=SWAP
 # instance=swap
@@ -119,20 +120,20 @@ command=python3 $MYSCRIPTS/disk_usage/disk_usage format="{used:.1f}G " #"({total
 [battery]
 #label=BAT
 # colored emoji
-#label=⚡
+label=⚡
 # unicode
-label=⚡︎
-interval=30
+# label=⚡︎
+interval=15
 
 # Date Time
 #
 [time]
 # colored emoji
-# label=🗓️
+label=🗓️
 # unicode
-label=🗓
+#label=🗓
 command=date '+%Y-%m-%d %H:%M:%S'
-interval=5
+interval=2
 
 # Generic media player support
 #
@@ -148,8 +149,8 @@ interval=5
 # OpenVPN support
 #
 # Support multiple VPN, with colors.
-#[openvpn]
-#interval=20
+# [openvpn]
+# interval=20
 
 # Temperature
 #

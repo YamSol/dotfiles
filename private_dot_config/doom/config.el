@@ -13,6 +13,16 @@
 
       )
 
+;; if you omit =:host=, ~SERVER~ is used instead.
+(after! circe
+  (set-irc-server! "irc.libera.chat"
+    `(:tls t
+      :port 6697
+      :nick "doom"
+      :sasl-username "m4ster"
+      :sasl-password "@HT(&*g)"
+      :channels ("#emacs"))))
+
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
 ;; - `doom-font' -- the primary font to use
@@ -84,30 +94,8 @@
 ;;(setq-default vterm-shell (executable-find "fish"))
 ;;(setq-default explicit-shell-file-name (executable-find "fish"))
 
-
-
-;; DON'T WORK WITH IT
-;;1º-WAY (use-package! exec-path-from-shell
-;;   :init
-;;   ;; (setq exec-path-from-shell-startup-files nil
-;;   ;;       exec-path-from-shell-variables '("PATH" "MANPATH")
-;;   ;;       exec-path-from-shell-arguments '("-l"))
-;;   (exec-path-from-shell-initialize)
-;;   :config
-;;   (exec-path-from-shell-copy-envs '("SSH_AUTH_SOCK" "SSH_AGENT_PID"))
-;;2º-WAY (after! doom-cli-env
-;;   (add-to-list 'doom-env-allow "^SSH_"))
-;;3º-WAY (require 'exec-path-from-shell)
-;; (dolist (var '("SSH_AUTH_SOCK" "SSH_AGENT_PID" "GPG_AGENT_INFO" "LANG" "LC_CTYPE" "NIX_SSL_CERT_FILE" "NIX_PATH"))
-;;   (add-to-list 'exec-path-from-shell-variables var))
-
-;; (use-package! keychain-environment)
-;; (after! keychain-environment (keychain-refresh-environment))
-
 (keychain-refresh-environment)
 (setenv "SSH_AUTH_SOCK" (getenv "SSH_AUTH_SOCK"))
 (setenv "SSH_AGENT_PID" (getenv "SSH_AGENT_PID"))
 
-;; (shell-command "keychain --eval --agents ssh")
-;; (getenv "SSH_AUTH_SOCK")
-;; (getenv "SSH_AGENT_PID")
+(setq +latex-viewers '(pdf-tools))

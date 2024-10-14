@@ -27,29 +27,12 @@ alias sa="sudo apt"
   alias sai="sa install"
   alias sas="apt search" # not actually 'sudo'
   alias sau="sa update"
-alias e="emacsclient -t"
 
-# PERSONAL FUNCTIONS ===================
-# Print working size
-function pws
-    echo $(du -sh 2>/dev/null | awk '{print $1}')
-end
+alias e="emacs"
+#alias e="emacsclient -t"
 
-# Chezmoi improved funcion. Add all changes from config to Chezmois' repository.
-function chezmoi-addd
-  set prev_path $(pwd)
-  chezmoi add $(chezmoi status | awk '{print $2}') 2>/dev/null
-  cd ~/.local/share/chezmoi && git status
-  cd $prev_path
-end
-# chezmoi-addd function improved. Also commits, pull and push changes.
-function chezmoi-addD
-  set prev_path $(pwd)
-  chezmoi add $(chezmoi status | awk '{print $2}') 2>/dev/null
-  cd ~/.local/share/chezmoi &&
-    git add . &&
-    git commit -m "$(date --iso-8601)" &&
-    git pull &&
-    git push
-  cd $prev_path
-end
+alias g="firefox --search"
+
+alias sy="systemctl"
+  alias ssy="sudo systemctl"
+  alias syu="sy --user"
