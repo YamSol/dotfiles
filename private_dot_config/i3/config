@@ -5,70 +5,51 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 ### 0. VARIABLES
-
-# Mod Key
 # Super key
 set $mod Mod4
 # Alt
 set $alt Mod1
-
 # Window change for resizing, moving
 set $WIN_CHANGE 60
 set $WIN_CHANGE_1_2 30
-
 # Lock command
 set $LOCK_SCREEN_COMMAND i3lock --nofork -i $LOCK_BG
 
 
 ### 1. SERVICES
-
 # network manager
 exec --no-startup-id nm-applet
-
 # clipboard
 exec --no-startup-id copyq
-
 # Power manager
 exec --no-startup-id xfce4-power-manager
-
 # Picom (transparency)
-exec --no-startup-id picom -b
-
+# exec --no-startup-id picom -b
 # code editor (depracieted: using systemd service insteed)
-#exec --no-startup-id emacs --daemon
+  #exec --no-startup-id emacs --daemon
 
 
 ### 2. CONFIG
-
 # Start XDG autostart .desktop files using dex. See also https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
-
 # grabs a logind suspend inhibit lock and use i3lock to lock the screen before suspend.
 exec --no-startup-id "xss-lock --transfer-sleep-lock -- $LOCK_SCREEN_COMMAND"
-
 # Load Wallpaper
 exec --no-startup-id nitrogen --restore
-
 # Set correct keyboard
 exec --no-startup-id setxkbmap br
-
 # Border style <normal|1pixel|pixel xx|none|pixel>
 default_border pixel 5
 default_floating_border normal
-
 # Set inner/outer gaps
-#gaps inner 5
-#gaps outer 5
-
+  #gaps inner 5
+  #gaps outer 5
 # Font
 font pango:JetBrains Mono:style=Regular 12
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-
 # Focus follow mouse (False: follows new created windows)
 focus_follows_mouse false
-
 # move tiling windows via drag & drop by left-clicking into the title bar, or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
 
@@ -81,7 +62,6 @@ bar {
         # status_command i3blocks
         status_command DEFAULT_SCRIPTS="/usr/share/i3blocks" MYSCRIPTS="$HOME/.config/i3blocks" i3blocks
 }
-
 bar {
         position top
 	font pango:JetBrains Mono:style=Regular 10
@@ -91,35 +71,31 @@ bar {
 }
 
 
-
 ### 3. KEYBINDS
 
 ## 3.1 LAUNCH APPS
-
 # Terminal
 bindsym $mod+Return exec i3-sensible-terminal
 #bindsym $mod+Shift+Return exec --no-startup-id alacritty --class Alacritty, floating enable
-
 # Rofi
-bindsym $mod+d exec rofi -combi-modi drun -show drun -show-icons -theme $ROFI_THEME
-bindsym $mod+Tab exec rofi -show window -theme $ROFI_THEME
-# or 
-#bindsym $mod+d exec "rofi -show combi -combi-modi 'window,drun,ssh' -modi combi"
-# or
-#bindsym $mod+d exec "rofi -modi drun,run -show drun"
-
+bindsym $mod+d		exec rofi -combi-modi drun -show drun -show-icons -theme $ROFI_THEME
+bindsym $mod+Shift+d	exec dmenu_run
+# bindsym $mod+Tab exec rofi -show window -theme $ROFI_THEME
+  # or 
+  #bindsym $mod+d exec "rofi -show combi -combi-modi 'window,drun,ssh' -modi combi"
+  # or
+  #bindsym $mod+d exec "rofi -modi drun,run -show drun"
 # Zoom
 bindsym $mod+Z exec ~/.local/bin/boomer
-
 # Emoji Keyboard
 bindsym Ctrl+Mod1+e exec --no-startup-id gnome-characters
-
 # Print Screen
 bindsym Print exec flameshot gui
-
-# Apps from Fn Keys
-bindsym $mod+F1 exec "alacritty -e emacsclient --tty"
-# bindsym $mod+F1 exec emacs
+# Audio + Bluetooth
+bindsym $mod+Shift+m workspace 8;  exec --no-startup-id pavucontrol, exec --no-startup-id blueman-manager
+# Fn Keys
+bindsym $mod+F1 exec ~/scripts/open-emacs
+# bindsym $mod+F1 exec "alacritty -e emacsclient --tty"
 bindsym $mod+F2 exec nautilus
 bindsym $mod+F3 exec firefox
 bindsym $mod+F5 exec "alacritty -e btop"
@@ -128,22 +104,50 @@ bindsym $mod+F5 exec "alacritty -e btop"
 ## 3.2 TOOLS
 
 # POWER
-# # Set shut down, restart and locking features
-# bindsym $mod+g mode "$mode_system"
-# set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
-# mode "$mode_system" {
-#    bindsym l exec --no-startup-id i3exit lock, mode "default"
-#    bindsym s exec --no-startup-id i3exit suspend, mode "default"
-#    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-#    bindsym e exec --no-startup-id i3exit logout, mode "default"
-#    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-#    bindsym r exec --no-startup-id i3exit reboot, mode "default"
-#    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
-#    # exit system mode: "Enter" or "Escape"
-#    bindsym Return exec --no-startup-id "i3-msg exit", mode "default"
-#    bindsym Escape mode "default"
-# }
+# Set shut down, restart and locking features
+bindsym $mod+0 exec --no-startup-id ~/.config/rofi/scripts/powermenu_t1
+  # # Set shut down, restart and locking features
+  # bindsym $mod+g mode "$mode_system"
+  # set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+  # mode "$mode_system" {
+  #    bindsym l exec --no-startup-id i3exit lock, mode "default"
+  #    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+  #    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+  #    bindsym e exec --no-startup-id i3exit logout, mode "default"
+  #    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+  #    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+  #    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+  #    # exit system mode: "Enter" or "Escape"
+  #    bindsym Return exec --no-startup-id "i3-msg exit", mode "default"
+  #    bindsym Escape mode "default"
+  # }
+  #bindsym $mod+0 mode "$mode_system"
+  #set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+  #mode "$mode_system" {
+  #    bindsym l exec --no-startup-id i3exit lock, mode "default"
+  #    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+  #    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+  #    bindsym e exec --no-startup-id i3exit logout, mode "default"
+  #    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+  #    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+  #    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+  #
+  #    # exit system mode: "Enter" or "Escape"
+  #    bindsym Return exec --no-startup-id "i3-msg exit", mode "default"
+  #    bindsym Escape mode "default"
+  #}
 
+# TRANSPARENCY
+bindsym $mod+$alt+t mode "$mode_transparency"
+mode "$mode_transparency" {
+    set $delta 4
+    bindsym plus  	exec --no-startup-id picom-trans +$delta --current
+    bindsym minus 	exec --no-startup-id picom-trans -$delta --current
+    bindsym Return  mode "default"
+    bindsym Escape  mode "default"
+    bindsym $mod+$alt+t mode "default"
+    bindsym Ctrl+g  mode "default"
+}
 
 # VOLUME
 # set $refresh_i3status killall -SIGUSR1 i3status
@@ -191,25 +195,6 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-# Set shut down, restart and locking features
-bindsym $mod+0 exec --no-startup-id ~/.config/rofi/scripts/powermenu_t1
-#bindsym $mod+0 mode "$mode_system"
-#set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
-#mode "$mode_system" {
-#    bindsym l exec --no-startup-id i3exit lock, mode "default"
-#    bindsym s exec --no-startup-id i3exit suspend, mode "default"
-#    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-#    bindsym e exec --no-startup-id i3exit logout, mode "default"
-#    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-#    bindsym r exec --no-startup-id i3exit reboot, mode "default"
-#    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
-#
-#    # exit system mode: "Enter" or "Escape"
-#    bindsym Return exec --no-startup-id "i3-msg exit", mode "default"
-#    bindsym Escape mode "default"
-#}
-
-
 ## 3.3 WINDOWS
 
 # 3.3.1 resize window (you can also use the mouse for that)
@@ -221,10 +206,10 @@ mode "resize" {
         bindsym Up    resize shrink height $WIN_CHANGE px or 10 ppt
         bindsym Right resize grow   width  $WIN_CHANGE px or 10 ppt
         # # alternative 1
-        # bindsym j        resize shrink width  $WIN_CHANGE px or $WIN_CHANGE ppt
-        # bindsym k        resize grow   height $WIN_CHANGE px or $WIN_CHANGE ppt
-        # bindsym l        resize shrink height $WIN_CHANGE px or $WIN_CHANGE ppt
-        # bindsym ccedilla resize grow   width  $WIN_CHANGE px or $WIN_CHANGE ppt
+        bindsym j        resize shrink width  $WIN_CHANGE px or $WIN_CHANGE ppt
+        bindsym k        resize grow   height $WIN_CHANGE px or $WIN_CHANGE ppt
+        bindsym l        resize shrink height $WIN_CHANGE px or $WIN_CHANGE ppt
+        bindsym ccedilla resize grow   width  $WIN_CHANGE px or $WIN_CHANGE ppt
         # # alternative 2
         # # Left, Down, Up Right
         # bindcode 83 resize shrink width  $WIN_CHANGE px or 10 ppt
@@ -240,10 +225,10 @@ mode "resize" {
         bindsym Ctrl+Up    resize shrink height $WIN_CHANGE_1_2 px or 10 ppt
         bindsym Ctrl+Right resize grow   width  $WIN_CHANGE_1_2 px or 10 ppt
         # # alternative 1
-        # bindsym Ctrl+j        resize shrink width  $WIN_CHANGE_1_2 px or $WIN_CHANGE_1_2 ppt
-        # bindsym Ctrl+k        resize grow   height $WIN_CHANGE_1_2 px or $WIN_CHANGE_1_2 ppt
-        # bindsym Ctrl+l        resize shrink height $WIN_CHANGE_1_2 px or $WIN_CHANGE_1_2 ppt
-        # bindsym Ctrl+ccedilla resize grow   width  $WIN_CHANGE_1_2 px or $WIN_CHANGE_1_2 ppt
+        bindsym Ctrl+j        resize shrink width  $WIN_CHANGE_1_2 px or $WIN_CHANGE_1_2 ppt
+        bindsym Ctrl+k        resize grow   height $WIN_CHANGE_1_2 px or $WIN_CHANGE_1_2 ppt
+        bindsym Ctrl+l        resize shrink height $WIN_CHANGE_1_2 px or $WIN_CHANGE_1_2 ppt
+        bindsym Ctrl+ccedilla resize grow   width  $WIN_CHANGE_1_2 px or $WIN_CHANGE_1_2 ppt
         # # alternative 2
         # # Left, Down, Up Right
         # bindcode Ctrl+83 resize shrink width  $WIN_CHANGE_1_2 px or 10 ppt
@@ -263,16 +248,16 @@ bindsym $mod+Down  focus down
 bindsym $mod+Up    focus up
 bindsym $mod+Right focus right
 # alternative 1
-# bindsym $mod+j focus  left
-# bindsym $mod+k focus  down
-# bindsym $mod+l focus  up
-# bindsym $mod+ccedilla focus right
+bindsym $mod+j focus  left
+bindsym $mod+k focus  down
+bindsym $mod+l focus  up
+bindsym $mod+ccedilla focus right
 # alternative 2
 # NumberKeyboard: Left, Down, Up Right
-bindcode $mod+83 focus left
-bindcode $mod+88 focus down
-bindcode $mod+80 focus up
-bindcode $mod+85 focus right
+# bindcode $mod+83 focus left
+# bindcode $mod+88 focus down
+# bindcode $mod+80 focus up
+# bindcode $mod+85 focus right
 # alternative 3
 # PgUp
 bindcode $mod+89 focus right
@@ -287,12 +272,12 @@ bindsym $mod+Shift+Down  move down  $WIN_CHANGE
 bindsym $mod+Shift+Up    move up    $WIN_CHANGE
 bindsym $mod+Shift+Right move right $WIN_CHANGE
 # # alternative 1
-# bindsym $mod+Shift+j        move left  $WIN_CHANGE
-# bindsym $mod+Shift+k        move down  $WIN_CHANGE
-# bindsym $mod+Shift+l        move up    $WIN_CHANGE
-# bindsym $mod+Shift+ccedilla move right $WIN_CHANGE
+bindsym $mod+Shift+j        move left  $WIN_CHANGE
+bindsym $mod+Shift+k        move down  $WIN_CHANGE
+bindsym $mod+Shift+l        move up    $WIN_CHANGE
+bindsym $mod+Shift+ccedilla move right $WIN_CHANGE
 # # alternative 2
-# # Left, Down, Up Right
+# NumberKeyboard: Left, Down, Up Right
 # bindcode $mod+Shift+83 move left  $WIN_CHANGE
 # bindcode $mod+Shift+88 move down  $WIN_CHANGE
 # bindcode $mod+Shift+80 move up    $WIN_CHANGE
@@ -303,13 +288,13 @@ bindsym $mod+Ctrl+Shift+Left  move left  $WIN_CHANGE_1_2
 bindsym $mod+Ctrl+Shift+Down  move down  $WIN_CHANGE_1_2
 bindsym $mod+Ctrl+Shift+Up    move up    $WIN_CHANGE_1_2
 bindsym $mod+Ctrl+Shift+Right move right $WIN_CHANGE_1_2
-# # alternative 1
-# bindsym $mod+Ctrl+Shift+j        move left  $WIN_CHANGE_1_2
-# bindsym $mod+Ctrl+Shift+k        move down  $WIN_CHANGE_1_2
-# bindsym $mod+Ctrl+Shift+l        move up    $WIN_CHANGE_1_2
-# bindsym $mod+Ctrl+Shift+ccedilla move right $WIN_CHANGE_1_2
-# # alternative 2
-# # Left, Down, Up Right
+# alternative 1
+bindsym $mod+Ctrl+Shift+j        move left  $WIN_CHANGE_1_2
+bindsym $mod+Ctrl+Shift+k        move down  $WIN_CHANGE_1_2
+bindsym $mod+Ctrl+Shift+l        move up    $WIN_CHANGE_1_2
+bindsym $mod+Ctrl+Shift+ccedilla move right $WIN_CHANGE_1_2
+# alternative 2
+# NumberKeyboard: Left, Down, Up Right
 # bindcode $mod+Ctrl+Shift+83 move left  $WIN_CHANGE_1_2
 # bindcode $mod+Ctrl+Shift+88 move down  $WIN_CHANGE_1_2
 # bindcode $mod+Ctrl+Shift+80 move up    $WIN_CHANGE_1_2
@@ -389,6 +374,7 @@ bindsym $mod+Shift+$alt+Left  move workspace to output left
 bindsym $mod+Shift+$alt+Down  move workspace to output down
 bindsym $mod+Shift+$alt+Up    move workspace to output up
 bindsym $mod+Shift+$alt+Right move workspace to output right
+ 
 
 ### 4. WINDOWS PREFERENCES
 
@@ -411,6 +397,8 @@ assign [class="firefox"] $ws3
 set $float floating enable
 set $sticky sticky enable
 # Firefox picture-in-picture mode open on sticky
+for_window [title="^Console window for.*$"] $float
+for_window [class="ninjabrainbot-Main"] $float
 for_window [title="^Picture-in-Picture$"] $sticky
 for_window [class="copyq"] $float
 for_window [title="alsamixer"] $float

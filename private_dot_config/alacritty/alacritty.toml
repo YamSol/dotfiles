@@ -26,11 +26,12 @@
 # Themes from https://github.com/alacritty/alacritty-theme
 
 import = [
-	"themes/themes/github_dark_default.toml"
+	"themes/themes/catppuccin_mocha.toml"
 ]
 
 [font]
 	size = 9
 
 [window]
-	opacity = 0.8
+	# opacity = 0.8
+
